@@ -1,0 +1,54 @@
+/* font-family: 'MuseoModerno', cursive;
+font-family: 'Notable', sans-serif;
+font-family: 'Yellowtail', cursive; */
+
+header {
+    text-align: center;
+}
+
+p {
+    font-family: 'MuseoModerno', cursive;
+    font-size: 18px;
+}
+
+h3 {
+    font-family: 'MuseoModerno', cursive;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.row {
+    text-align: center;
+}
+
+#timer {
+    font-size: 36px;
+    margin: 30px;
+}
+
+#start-button {
+    margin: 30px;
+}
+
+#quiz-questions {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.btn {
+    font-family: 'MuseoModerno', cursive;
+}
+
+.btn-dark {
+    font-size: 36px;
+}
+
+.lead {
+    font-family: 'Yellowtail', cursive;
+    font-size: 36px;
+}
+
+.display-4 {
+    font-family: 'Notable', sans-serif;
+    font-size: 48px;
+}
