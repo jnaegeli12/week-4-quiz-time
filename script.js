@@ -2,21 +2,12 @@ const startbutton = document.getElementById("start-button");
 const quesText = document.getElementById("question-text");
 const quesStatus = document.getElementById("question-status");
 const timer = document.getElementById("timer");
+var scoresBtn = document.getElementById("scores");
 var choices;
 var answer;
 var seconds;
 var ansButton;
 var nextQuestion = 0;
-
-function highScores() {
-    var scoresBtn = document.getElementById("scores");
-    scoresBtn.on("click", function() {
-        startbutton.innerHTML = "High Scores";
-        quesText.innerHTML = localStorage.getItem(initials, seconds);
-        quesStatus.innerHTML = "";
-
-    });
-}
 
 startbutton.onclick = quizPlay;
 
@@ -91,4 +82,10 @@ function chooseAnswer() {
 function storeScores() {
     var initials = prompt("Enter your initials to save your score:");
     localStorage.setItem(initials, seconds);
+}
+
+function highScores(initials, seconds) {
+    scoresBtn.on("click", function() {
+        quesText.innerHTML = localStorage.getItem(initials, seconds);
+    });
 }
