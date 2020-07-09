@@ -1,11 +1,22 @@
 const startbutton = document.getElementById("start-button");
 const quesText = document.getElementById("question-text");
 const quesStatus = document.getElementById("question-status");
+const timer = document.getElementById("timer");
 var choices;
 var answer;
 var seconds;
 var ansButton;
-var nextQuestion;
+var nextQuestion = 0;
+
+function highScores() {
+    var scoresBtn = document.getElementById("scores");
+    scoresBtn.on("click", function() {
+        startbutton.innerHTML = "High Scores";
+        quesText.innerHTML = localStorage.getItem(initials, seconds);
+        quesStatus.innerHTML = "";
+
+    });
+}
 
 startbutton.onclick = quizPlay;
 
@@ -13,19 +24,26 @@ function quizPlay() {
     
     $("#start-button").hide();
     
-    document.getElementById("timer").innerHTML = 90;
+    timer.innerHTML = 90;
     getQuestions();
 
     seconds = document.getElementById("timer").textContent;
     var countdown = setInterval(function() {
         seconds--;
-        document.getElementById("timer").textContent = seconds + " seconds";
+        timer.textContent = seconds + " seconds";
         
         if (seconds <= 0) {
             clearInterval(countdown);
-            document.getElementById("timer").textContent = "Time's up!";
+            timer.textContent = "Time's up!";
             $("#question-status").empty();
             quesText.innerHTML = "Thanks for playing!" + "<br>" + "Your score is " + 0 + "."
+        }
+
+        else if (nextQuestion === 6) {
+            clearInterval(countdown);
+            timer.textContent = "Congrats! Your score is " + seconds + ".";
+            quesStatus.innerHTML = "";
+            storeScores();
         }
 
     }, 1000);
@@ -33,27 +51,26 @@ function quizPlay() {
 }
 
 function getQuestions() {
-    // for (var i = 0; i < questions.length; i++) {
-        nextQuestion = 0;
-        choices = questions[nextQuestion].choices;
-        answer = questions[nextQuestion].answer;
 
-        quesText.innerHTML = "<hr>" + questions[nextQuestion].title + "<br>";
-        chooseAnswer();
+    choices = questions[nextQuestion].choices;
+    answer = questions[nextQuestion].answer;
 
-    // }
-    console.log(answer);
+    quesText.innerHTML = "<hr>" + questions[nextQuestion].title + "<br>";
+    chooseAnswer();
+
 }
 
 function chooseAnswer() {
+    
     for (var j = 0; j < choices.length; j++) {
         ansButton = $("<button>");
         ansButton.addClass("btn btn-light");
         ansButton.text(choices[j]);
         $("#question-text").append(ansButton);
         
-        ansButton.on("click", function() {
-            if (choices[j] === answer) {
+        ansButton.on("click", function(e) {
+            
+            if (e.target.innerText === answer) {
                 quesStatus.innerHTML = "<hr>" + "Correct!";
                 quesText.innerHTML = "";
                 nextQuestion++;
@@ -68,4 +85,10 @@ function chooseAnswer() {
         });
 
     }
+
+}
+
+function storeScores() {
+    var initials = prompt("Enter your initials to save your score:");
+    localStorage.setItem(initials, seconds);
 }

@@ -22,7 +22,7 @@ var questions = [
     {
         title: "Which is an example of a string?",
         choices: ['false', '"New York City"', '8', 'none'],
-        answer: "New York City"
+        answer: '"New York City"'
     },
     {
         title: 'How do you display values in the browser console?',
