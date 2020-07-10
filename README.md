@@ -7,5 +7,5 @@ The user clicks the "Start Quiz" button to begin the 90-second countdown timer a
 ## Things not quite working
 I ran out of time to figure out how to pull the values from localstorage and display high scores.
 
-![image](https://user-images.githubusercontent.com/62922022/87102700-8202c280-c207-11ea-9c49-fde7b0f7c8e8.png)
+![image](https://user-images.githubusercontent.com/62922022/87102846-1a994280-c208-11ea-975b-98386b8172d5.png)
 
